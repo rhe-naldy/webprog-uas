@@ -103,15 +103,24 @@ class AccountController extends Controller
         return view('logout');
     }
 
-    public function viewUpdateRolePage($user_id){
+    public function viewUpdateRolePage($account_id){
+        $currAccount = Account::find($account_id);
 
+        return view('update-role')->with('account', $currAccount);
     }
 
-    public function updateRole(Request $request, $user_id){
+    public function updateRole(Request $request, $account_id){
+        $currAccount = Account::find($account_id);
+        $currAccount->role_id = $request->role_id;
+        $currAccount->save();
 
+        return redirect()->back();
     }
 
-    public function deleteAccount($user_id){
+    public function deleteAccount($account_id){
+        $currAccount = Account::find($account_id);
+        $currAccount->delete();
 
+        return redirect()->back();
     }
 }
