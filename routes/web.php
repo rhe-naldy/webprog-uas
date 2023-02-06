@@ -14,3 +14,5 @@ use App\Http\Controllers\AccountController;
 */
 
 Route::get('/', [AccountController::class, 'checkAuth']);
+Route::get('/login', [AccountController::class, 'viewLoginPage']);
+Route::get('/register', [AccountController::class, 'viewRegisterPage']);

@@ -10,7 +10,34 @@
 </head>
 @include('layout.header')
 <body>
+    <div class="container pt-5 w-25">
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <h1 class="d-flex justify-content-center">Login</h1>
+                <label>Email</label>
+                <input type="email" class="form-control mb-3" name="email">
+                @error('email')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
 
+                <label>Password</label>
+                <input type="password" class="form-control mb-3" name="password">
+                @error('password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="pb-4 d-flex align-items-center">
+                <label>Remember me</label>
+                <input class="mx-2" type="checkbox" name="remember" checked={{Cookie::get('emailCookie') != null}}>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary px-5">Login</button>
+            </div>
+            <div class="pt-4 d-flex justify-content-center">
+                <p>Don't have an account yet? Register <span onclick="window.location='/register'" class="text-primary">here</span></p>
+            </div>
+        </form>
+    </div>
 </body>
 @include('layout.footer')
 </html>
