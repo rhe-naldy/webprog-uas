@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary p-3">
-        <a class="navbar-brand" href="#">Amazing E-Grocery</a>
+        <a class="navbar-brand mb-1 mx-2 h1" href="#">Amazing E-Grocery</a>
         <div class="collapse navbar-collapse justify-content-between">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
