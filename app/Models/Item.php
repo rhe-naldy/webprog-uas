@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Item extends Model
 {
-    use HasFactory;
+    protected $fillable = ['item_name', 'item_desc', 'price'];
+
+    public function orders(){
+        return $this->belongsToMany(Account::class, "orders", "item_id", "account_id");
+    }
 }

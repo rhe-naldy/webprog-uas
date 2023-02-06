@@ -18,6 +18,6 @@ class Account extends Model
     }
 
     public function orders(){
-        return $this->belongsToMany(Item::class, "orders", "account_id", "order_id");
+        return $this->belongsToMany(Item::class, "orders", "account_id", "item_id");
     }
 }

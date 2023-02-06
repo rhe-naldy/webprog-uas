@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Models\Account;
 
 class AccountController extends Controller
 {
@@ -52,6 +53,18 @@ class AccountController extends Controller
             'password_confirmation.required' => 'Please confirm your password',
             'password_confirmation.same' => 'The passwords are different'
         ]);
+
+        //upload image
+
+        Account::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'email' => $request->email,
+            'role' => $request->role,
+            'gender' => $request->gender,
+            'display_picture_link' => $imageName,
+            'password' => $request->password
+        ]);
     }
 
     public function viewLoginPage(Request $request){
@@ -88,5 +101,17 @@ class AccountController extends Controller
     public function logout(){
         Auth::logout();
         return view('logout');
+    }
+
+    public function viewUpdateRolePage($user_id){
+
+    }
+
+    public function updateRole(Request $request, $user_id){
+
+    }
+
+    public function deleteAccount($user_id){
+
     }
 }
