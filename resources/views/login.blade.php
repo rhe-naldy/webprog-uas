@@ -10,18 +10,18 @@
 </head>
 @include('layout.header')
 <body>
-    <div class="container pt-5 w-25">
+    <div class="container p-5 mt-3 w-25 border rounded">
         <form action="/login" method="POST">
             <div class="form-group">
                 <h1 class="d-flex justify-content-center">Login</h1>
                 <label>Email</label>
-                <input type="email" class="form-control mb-3" name="email">
+                <input type="email" class="form-control mb-2" name="email">
                 @error('email')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
                 <label>Password</label>
-                <input type="password" class="form-control mb-3" name="password">
+                <input type="password" class="form-control mb-2" name="password">
                 @error('password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
