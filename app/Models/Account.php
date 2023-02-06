@@ -16,4 +16,8 @@ class Account extends Model
     public function role(){
         return $this->belongsTo(Role::class, "role_id", "role_id");
     }
+
+    public function orders(){
+        return $this->belongsToMany(Item::class, "orders", "account_id", "order_id");
+    }
 }
