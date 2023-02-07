@@ -10,7 +10,78 @@
 </head>
 @include('layout.header')
 <body>
+    <div class="container p-5 mt-3 w-25 border rounded" style="margin-bottom: 10rem">
+        <form action="/register" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group">
+                <h1 class="d-flex justify-content-center">Register</h1>
+                <label>First Name</label>
+                <input type="text" class="form-control mb-2" name="first_name">
+                @error('first_name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
 
+                <label>Last Name</label>
+                <input type="text" class="form-control mb-2" name="last_name">
+                @error('last_name')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+                <label>Email</label>
+                <input type="email" class="form-control mb-2" name="email">
+                @error('email')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+                <label>Role</label>
+                <select class="form-control mb-2" name="role" disabled>
+                    <option value="user" selected>User</option>
+                </select>
+                @error('role')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+                <label>Gender</label>
+                <select class="form-control mb-2" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+                @error('gender')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+                <label>Display Picture</label>
+                <input type="file" accpet="image/*, .jpeg, .jpg, .png, .gif" class="form-control mb-2" name="display_picture_link">
+                @error('display_picture_link')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+                <label>Password</label>
+                <input type="password" class="form-control mb-2" name="password">
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                @error('password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+
+                <label>Confirm Password</label>
+                <input type="password" class="form-control mb-2" name="confirm_password">
+                <i class="bi bi-eye-slash" id="togglePassword"></i>
+                @error('confirm_password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
+            </div>
+            <div class="pb-4 d-flex align-items-center">
+                <label>Remember me</label>
+                <input class="mx-2" type="checkbox" name="remember" checked={{Cookie::get('emailCookie') != null}}>
+            </div>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary px-5">Login</button>
+            </div>
+            <div class="pt-4 d-flex justify-content-center">
+                <p>Don't have an account yet? Register <span onclick="window.location='/register'" class="text-primary">here</span></p>
+            </div>
+        </form>
+    </div>
 </body>
 @include('layout.footer')
 </html>
