@@ -103,6 +103,12 @@ class AccountController extends Controller
         return view('logout');
     }
 
+    public function viewMaintenancePage(){
+        $accounts = Account::all();
+
+        return view('maintenance')->with('accounts', $accounts);
+    }
+
     public function viewUpdateRolePage($account_id){
         $currAccount = Account::find($account_id);
 

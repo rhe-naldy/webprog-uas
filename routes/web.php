@@ -18,3 +18,7 @@ Route::get('/login', [AccountController::class, 'viewLoginPage']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::get('/register', [AccountController::class, 'viewRegisterPage']);
 Route::post('/register', [AccountController::class, 'register']);
+Route::post('/logout');
+Route::get('/home');
+Route::get('/profile');
+Route::get('/manage');
