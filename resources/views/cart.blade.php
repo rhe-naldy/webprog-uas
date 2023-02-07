@@ -10,7 +10,14 @@
 </head>
 @include('layout.header')
 <body>
+    <div class="mx-5">
+        @foreach ( as )
 
+        @endforeach
+    </div>
+    <div class="mx-5">
+
+    </div>
 </body>
 @include('layout.footer')
 </html>
