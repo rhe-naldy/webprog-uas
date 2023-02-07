@@ -12,4 +12,10 @@ class ItemController extends Controller
 
         return view('home')->with('items', $items);
     }
+
+    public function viewItemDetail($item_id){
+        $item = Item::find($item_id);
+
+        return view('view-item')->with('item', $item);
+    }
 }

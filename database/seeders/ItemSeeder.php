@@ -123,5 +123,27 @@ class ItemSeeder extends Seeder
             Note: This vegetable won 1st place at Canna UK National Giant Vegetables Championship.",
             'price' => 12000000
         ]);
+
+        DB::table('items')->insert([
+            'item_id' => 11,
+            'item_name' => "Vegetable 11",
+            'item_desc' => "LIMITED VEGETABLE!
+
+            Vegetables are parts of plants that are consumed by humans or other animals as food. This limited vegetable is te only one in the world because of its size and color.
+
+            Note: This vegetable won 1st place at Canna UK National Giant Vegetables Championship.",
+            'price' => 13000000
+        ]);
+
+        DB::table('items')->insert([
+            'item_id' => 12,
+            'item_name' => "Vegetable 12",
+            'item_desc' => "LIMITED VEGETABLE!
+
+            Vegetables are parts of plants that are consumed by humans or other animals as food. This limited vegetable is te only one in the world because of its size and color.
+
+            Note: This vegetable won 1st place at Canna UK National Giant Vegetables Championship.",
+            'price' => 9000000
+        ]);
     }
 }

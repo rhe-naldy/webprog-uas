@@ -10,32 +10,21 @@
 </head>
 @include('layout.header')
 <body>
-    <div class="row row-cols-1 row-cols-md-4 g-4 m-2">
-        {{-- SHOW PRODUCT --}}
-        @foreach ($products as $product)
+    <div class="row row-cols-2 row-cols-md-5 g-5" style="margin-left: 15rem; margin-right: 15rem">
+        @foreach ($items as $item)
             <div class="col">
-                <div class="card h-100 text-white text-center bg-dark mb-3" style="...">
-                    <img class="card-ing-top" src="{{ url($product->image) }}" alt="Image Not Found" style="...">
+                <div class="card h-100 text-white text-center mb-3" style="...">
+                    <img class="img-thumbnail" src="items/broccoli.png" alt="Image Not Found" style="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">Rp.{{ number_format($product->price, 0, '.', '.') }}</p>
+                        <h6 class="text-dark">{{ $item->item_name }}</h6>
+                        <a class="card-text" href="/item/{{ $item->item_id }}">Detail</a>
                     </div>
-                    <div class="flex">
-                        <a href="/updateProduct/{{$product->id}}" type="submit" class="btn btn-primary w-50">Update</a>
-                    </div>
-                    <form method="POST" action="/deleteData/{{$product->id}}">
-                        {{-- CSRF --}}
-                        @csrf
-                        {{-- METHOD DELETE --}}
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger w-50">Delete</button>
-                    </form>
                 </div>
             </div>
         @endforeach
     </div>
-    <div class="m-5 d-flex justify-content-center">
-        {{$products->withQueryString()->links()}}
+    <div class="d-flex justify-content-center" style="margin-top: 2rem; margin-bottom: 7rem">
+        {{$items->links()}}
     </div>
 </body>
 @include('layout.footer')
