@@ -9,6 +9,8 @@ class Order extends Model
 {
     protected $fillable = ['account_id', 'item_id', 'price'];
 
+    protected $primaryKey = 'order_id';
+
     public function account(){
         return $this->belongsTo(Account::class);
     }

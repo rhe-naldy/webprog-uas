@@ -21,7 +21,7 @@ Route::get('/register', [AccountController::class, 'viewRegisterPage']);
 Route::post('/register', [AccountController::class, 'register']);
 Route::post('/logout', [AccountController::class, 'logout']);
 Route::get('/home', [ItemController::class, 'viewHomePage']);
-Route::get('/item/{$item_id}', [ItemController::class, 'viewItemDetail']);
+Route::get('/item/{item_id}', [ItemController::class, 'viewItemDetail']);
 Route::get('/profile', [AccountController::class, 'viewProfilePage']);
 Route::get('/manage', [AccountController::class, 'viewMaintenancePage']);
 

@@ -9,6 +9,8 @@ class Gender extends Model
 {
     protected $fillable = ['gender_desc'];
 
+    protected $primaryKey = 'gender_id';
+
     public function accounts(){
         return $this->hasMany(Account::class, "gender_id", "gender_id");
     }

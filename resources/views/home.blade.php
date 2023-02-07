@@ -14,7 +14,7 @@
         @foreach ($items as $item)
             <div class="col">
                 <div class="card h-100 text-white text-center mb-3" style="...">
-                    <img class="img-thumbnail" src="items/broccoli.png" alt="Image Not Found" style="...">
+                    <img class="img-thumbnail" src="/items/broccoli.png" alt="Image Not Found" style="...">
                     <div class="card-body">
                         <h6 class="text-dark">{{ $item->item_name }}</h6>
                         <a class="card-text" href="/item/{{ $item->item_id }}">Detail</a>
