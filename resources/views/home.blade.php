@@ -10,7 +10,33 @@
 </head>
 @include('layout.header')
 <body>
-
+    <div class="row row-cols-1 row-cols-md-4 g-4 m-2">
+        {{-- SHOW PRODUCT --}}
+        @foreach ($products as $product)
+            <div class="col">
+                <div class="card h-100 text-white text-center bg-dark mb-3" style="...">
+                    <img class="card-ing-top" src="{{ url($product->image) }}" alt="Image Not Found" style="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">Rp.{{ number_format($product->price, 0, '.', '.') }}</p>
+                    </div>
+                    <div class="flex">
+                        <a href="/updateProduct/{{$product->id}}" type="submit" class="btn btn-primary w-50">Update</a>
+                    </div>
+                    <form method="POST" action="/deleteData/{{$product->id}}">
+                        {{-- CSRF --}}
+                        @csrf
+                        {{-- METHOD DELETE --}}
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger w-50">Delete</button>
+                    </form>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    <div class="m-5 d-flex justify-content-center">
+        {{$products->withQueryString()->links()}}
+    </div>
 </body>
 @include('layout.footer')
 </html>
