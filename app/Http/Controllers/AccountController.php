@@ -65,6 +65,8 @@ class AccountController extends Controller
             'display_picture_link' => $imageName,
             'password' => $request->password
         ]);
+
+        return redirect('/login');
     }
 
     public function viewLoginPage(Request $request){
@@ -101,6 +103,13 @@ class AccountController extends Controller
     public function logout(){
         Auth::logout();
         return view('logout');
+    }
+
+    public function viewProfilePage(){
+        $account_id = Auth::user()->account_id;
+        $account = Account::find($account_id);
+
+        return view('profile')->with('account', $account);
     }
 
     public function viewMaintenancePage(){

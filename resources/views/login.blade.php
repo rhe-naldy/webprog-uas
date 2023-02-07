@@ -12,6 +12,7 @@
 <body>
     <div class="container p-5 mt-3 w-25 border rounded">
         <form action="/login" method="POST">
+            @csrf
             <div class="form-group">
                 <h1 class="d-flex justify-content-center">Login</h1>
                 <label>Email</label>
@@ -29,6 +30,11 @@
             <div class="pb-4 d-flex align-items-center">
                 <label>Remember me</label>
                 <input class="mx-2" type="checkbox" name="remember" checked={{Cookie::get('emailCookie') != null}}>
+            </div>
+            <div>
+                @error('credentials')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary px-5">Login</button>

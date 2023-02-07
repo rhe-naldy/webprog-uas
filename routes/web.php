@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\ItemController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +19,10 @@ Route::get('/login', [AccountController::class, 'viewLoginPage']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::get('/register', [AccountController::class, 'viewRegisterPage']);
 Route::post('/register', [AccountController::class, 'register']);
-Route::post('/logout');
-Route::get('/home');
-Route::get('/profile');
-Route::get('/manage');
+Route::post('/logout', [AccountController::class, 'logout']);
+Route::get('/home', [ItemController::class, 'viewHomePage']);
+Route::get('/profile', [AccountController::class, 'viewProfilePage']);
+Route::get('/manage', [AccountController::class, 'viewMaintenancePage']);
+
+Route::get('/cart', [OrderController::class, 'viewCartPage']);
+Route::delete('/delete-from-cart/{item_id}', [OrderController::class, 'deleteItemFromCart']);
