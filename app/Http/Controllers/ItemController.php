@@ -18,4 +18,12 @@ class ItemController extends Controller
 
         return view('view-item')->with('item', $item);
     }
+
+    public function buyItem($item_id){
+        $item = Item::find($item_id);
+
+        OrderController::addItemToCart($item_id, $item->price);
+
+        return redirect('/home');
+    }
 }

@@ -11,9 +11,9 @@ class OrderController extends Controller
     public static function addItemToCart($item_id, $price){
         $account_id = Auth::user()->account_id;
 
-        Order::create([
+        Order::insert([
             'account_id' => $account_id,
-            '$item_id' => $item_id,
+            'item_id' => $item_id,
             'price' => $price
         ]);
     }

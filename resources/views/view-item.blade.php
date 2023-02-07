@@ -21,7 +21,10 @@
                 <p>{{ $item->item_desc }}</p>
             </div>
             <div class="d-flex flex-row-reverse p-5">
-                <button class="btn btn-primary" type="submit">Buy</button>
+                <form action="/buy-item/{{$item->item_id}}" method="POST">
+                    @csrf
+                    <button class="btn btn-primary" type="submit">Buy</button>
+                </form>
             </div>
         </div>
 
