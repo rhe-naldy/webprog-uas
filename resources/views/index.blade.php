@@ -11,6 +11,9 @@
 @include('layout.header')
 <body>
     <h1 class="pt-5 d-flex justify-content-center">Find and Buy Your Groceries Here!</h1>
+    @error('restricted')
+        <p class="text-danger pt-5 d-flex justify-content-center">You need to register to access the page!</p>
+    @enderror
     <h4 class="pt-5 d-flex justify-content-center">Please Register/Login to use our service</h4>
 </body>
 @include('layout.footer')
