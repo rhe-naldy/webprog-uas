@@ -10,7 +10,12 @@
 </head>
 @include('layout.header')
 <body>
-
+    <div class="m-5 d-flex flex-column align-items-center">
+        <h1 class="mt-5">Saved!</h1>
+        <br>
+        <br>
+        <span>Click <a href="/home">here</a> to go to "Home".</span>
+    </div>
 </body>
 @include('layout.footer')
 </html>

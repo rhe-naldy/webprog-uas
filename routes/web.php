@@ -27,6 +27,7 @@ Route::get('/item/{item_id}', [ItemController::class, 'viewItemDetail']);
 Route::post('/buy-item/{item_id}', [ItemController::class, 'buyItem']);
 Route::get('/profile', [AccountController::class, 'viewProfilePage']);
 Route::patch('/update-profile', [AccountController::class, 'updateProfile']);
+Route::get('/update-success', [AccountController::class, 'viewSuccessPage']);
 Route::get('/manage', [AccountController::class, 'viewMaintenancePage']);
 
 Route::get('/cart', [OrderController::class, 'viewCartPage']);

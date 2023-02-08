@@ -32,7 +32,7 @@ class AccountController extends Controller
             'role' => 'required',
             'gender' => 'required',
             'display_picture_link' => 'required|file|mimes:jpeg,jpg,png,gif',
-            'password' => 'required|min:8|alpha_num',
+            'password' => 'required|min:8|alpha_num|same:confirm_password',
             'confirm_password' => 'required|same:password'
         ], [
             'first_name.required' => 'Please enter your first name',
@@ -52,8 +52,9 @@ class AccountController extends Controller
             'password.required' => 'Please enter your password',
             'password.min' => 'Password is too short',
             'password.alpha_num' => 'Password must be alphanumerical',
-            'password_confirmation.required' => 'Please confirm your password',
-            'password_confirmation.same' => 'The passwords are different'
+            'password.same' => 'The passwords are different',
+            'confirm_password.required' => 'Please confirm your password',
+            'confirm_password.same' => 'The passwords are different'
         ]);
 
         $ext = $request->display_picture_link->getClientOriginalExtension();
@@ -130,8 +131,8 @@ class AccountController extends Controller
             'role' => 'required',
             'gender' => 'required',
             'display_picture_link' => 'file|mimes:jpeg,jpg,png,gif',
-            'password' => 'required|min:8|alpha_num',
-            'confirm_password' => 'required|same:password'
+            'password' => 'min:8|alpha_num|same:confirm_password',
+            'confirm_password' => 'same:password'
         ], [
             'first_name.required' => 'Please enter your first name',
             'first_name.alpha' => 'First name must only use alphabets',
@@ -146,11 +147,11 @@ class AccountController extends Controller
             'gender.required' => 'Please select your gender',
             'display_picture_link.file' => 'Profile picture needs to be a file',
             'display_picture_link.mimes' => 'Profile picture needs to be jpeg, jpg, png, or gif format',
-            'password.required' => 'Please enter your password',
             'password.min' => 'Password is too short',
+            'password.same' => 'The passwords are different',
             'password.alpha_num' => 'Password must be alphanumerical',
-            'password_confirmation.required' => 'Please confirm your password',
-            'password_confirmation.same' => 'The passwords are different'
+            'password.same' => 'The passwords are different',
+            'confirm_password.same' => 'The passwords are different'
         ]);
 
         $account_id = Auth::user()->account_id;
@@ -160,7 +161,10 @@ class AccountController extends Controller
         $account->email = $request->email;
         $account->role_id = $request->role;
         $account->gender_id = $request->gender;
-        $account->password = bcrypt($request->password);
+
+        if($request->password != null){
+            $account->password = bcrypt($request->password);
+        }
 
         if($request->display_picture_link != null){
             $ext = $request->display_picture_link->getClientOriginalExtension();
@@ -173,7 +177,11 @@ class AccountController extends Controller
 
         $account->save();
 
-        return redirect()->back();
+        return redirect("/update-success");
+    }
+
+    public function viewSuccessPage(){
+        return view('saved');
     }
 
     public function viewMaintenancePage(){
