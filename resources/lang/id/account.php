@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'register' => "Daftar",
+    'login' => "Masuk",
+    'logout' => "Keluar",
+    'password' => "Kata Sandi",
+    'remember' => "Ingat saya",
+    'no_account' => "Belum punya akun? Daftar ",
+    'here' => "disini",
+    'logout_success' => "Sukses Keluar!",
+    'delete' => "Hapus",
+    'account' => "Akun",
+    'action' => "Aksi",
+    'first_name' => "Nama Depan",
+    'last_name' => "Nama Belakang",
+    'role' => "Peran",
+    'gender' => "Jenis Kelamin",
+    'picture' => "Gambar",
+    'conf_password' => "Konfirmasi Kata Sandi",
+    'new_password' => "Kata Sandi Baru",
+    'conf_new_password' => "Konfirmasi Kata Sandi Baru",
+    'update' => "Perbaharui",
+    'profile' => "Data Pribadi",
+    'have_account' => "Sudah memiliki akun? Masuk ",
+    'saved' => "Berhasil Disimpan!",
+    'click' => "Tekan ",
+    'home' => ' untuk pergi ke halaman "Home"',
+    'save' => "Simpan"
+];

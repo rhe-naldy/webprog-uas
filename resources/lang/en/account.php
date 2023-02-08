@@ -1,4 +1,5 @@
 <?php
+
 return [
     'register' => "Register",
     'login' => "Login",
@@ -8,7 +9,6 @@ return [
     'no_account' => "Don't have an account yet? Register ",
     'here' => "here",
     'logout_success' => "Log Out Success!",
-    'update_role' => "Update Role",
     'delete' => "Delete",
     'account' => "Account",
     'action' => "Action",
@@ -27,5 +27,5 @@ return [
     'saved' => "Saved!",
     'click' => "Click ",
     'home' => ' to go to "Home".',
-    'save' => "Simpan"
+    'save' => "Save"
 ];

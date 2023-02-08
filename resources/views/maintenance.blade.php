@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ $account->first_name }} {{ $account->last_name }} - {{ $account->role->role_name }}</td>
                     <td class="d-flex flex-row">
-                        <a class="btn btn-primary" href="/{locale}/update-role/{{$account->account_id}}">{{__('account.update_role')}}</a>
+                        <a class="btn btn-primary" href="/{locale}/update-role/{{$account->account_id}}">{{__('account.update')}} {{__('account.role')}}</a>
                         <form class="px-3" action="/delete-account/{{$account->account_id}}" method="POST">
                             @method('DELETE')
                             @csrf
