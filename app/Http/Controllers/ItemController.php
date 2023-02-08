@@ -14,7 +14,6 @@ class ItemController extends Controller
     }
 
     public function viewItemDetail($locale, $item_id){
-        app()->setlocale($locale);
         $item = Item::find($item_id);
 
         return view('view-item')->with('item', $item);

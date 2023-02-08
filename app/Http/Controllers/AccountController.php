@@ -190,8 +190,6 @@ class AccountController extends Controller
     }
 
     public function viewUpdateRolePage($locale, $account_id){
-        app()->setlocale($locale);
-
         $currAccount = Account::find($account_id);
         $roles = RoleController::getAllRoles();
 
