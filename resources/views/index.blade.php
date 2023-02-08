@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,11 @@
 </head>
 @include('layout.header')
 <body>
-    <h1 class="pt-5 d-flex justify-content-center">Find and Buy Your Groceries Here!</h1>
+    <h1 class="pt-5 d-flex justify-content-center">{{ __('index.welcome') }}</h1>
     @error('restricted')
-        <p class="text-danger pt-5 d-flex justify-content-center">You need to register to access the page!</p>
+        <p class="text-danger pt-5 d-flex justify-content-center">{{ __('index.unregistered') }}</p>
     @enderror
-    <h4 class="pt-5 d-flex justify-content-center">Please Register/Login to use our service</h4>
+    <h4 class="pt-5 d-flex justify-content-center">{{ __('index.register-or-login') }}</h4>
 </body>
 @include('layout.footer')
 </html>

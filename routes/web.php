@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\Session;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +16,22 @@ use App\Http\Controllers\OrderController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function (){
+    $locale = 'en';
+    App::setLocale($locale);
+    Session::put('locale', $locale);
 
-Route::get('/', [AccountController::class, 'checkAuth']);
+    return redirect('/'.$locale);
+});
 
+Route::get('/{locale}', function ($locale){
+    App::setLocale($locale);
+    Session::put('locale', $locale);
+
+    return redirect()->back();
+});
+
+Route::get('/{locale}', [AccountController::class, 'checkAuth']);
 Route::get('/login', [AccountController::class, 'viewLoginPage']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::get('/register', [AccountController::class, 'viewRegisterPage']);
@@ -24,7 +39,7 @@ Route::post('/register', [AccountController::class, 'register']);
 Route::get('/logout', [AccountController::class, 'viewLogoutPage'])->middleware('registered');
 Route::post('/logout', [AccountController::class, 'logout'])->middleware('registered');
 
-Route::get('/home', [ItemController::class, 'viewHomePage'])->middleware('registered');
+Route::get('/{locale}/home', [ItemController::class, 'viewHomePage'])->middleware('registered');
 Route::get('/item/{item_id}', [ItemController::class, 'viewItemDetail'])->middleware('registered');
 Route::post('/buy-item/{item_id}', [ItemController::class, 'buyItem'])->middleware('registered');
 
