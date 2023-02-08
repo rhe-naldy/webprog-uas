@@ -13,7 +13,7 @@ class AccountController extends Controller
 {
     public function checkAuth(){
         if(Auth::check()){
-            return redirect('/home');
+            return redirect('/{locale}/home');
         } else if(!Auth::check()){
             return view('index');
         }
@@ -73,7 +73,7 @@ class AccountController extends Controller
             'password' => bcrypt($request->password)
         ]);
 
-        return redirect('/login');
+        return redirect('/{locale}/login');
     }
 
     public function viewLoginPage(Request $request){
@@ -101,16 +101,16 @@ class AccountController extends Controller
 
         if(Auth::attempt($credentials, true)){
             Session::put('session', $credentials);
-            return redirect('/home');
+            return redirect('/{locale}/home');
         }
 
-        return redirect('/login')->withErrors(['credentials' => 'Wrong Email/Password. Please Check Again']);
+        return redirect('/{locale}/login')->withErrors(['credentials' => 'Wrong Email/Password. Please Check Again']);
     }
 
     public function logout(){
         Auth::logout();
         Session::forget('session');
-        return redirect('/logout');
+        return redirect('/{locale}/logout');
     }
 
     public function viewLogoutPage(){
@@ -176,7 +176,7 @@ class AccountController extends Controller
 
         $account->save();
 
-        return redirect("/update-success");
+        return redirect("/{locale}/update-success");
     }
 
     public function viewSuccessPage(){
@@ -201,7 +201,7 @@ class AccountController extends Controller
         $currAccount->role_id = $request->role;
         $currAccount->save();
 
-        return redirect('/maintenance');
+        return redirect('/{locale}/maintenance');
     }
 
     public function deleteAccount($account_id){

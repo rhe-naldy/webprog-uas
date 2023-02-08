@@ -24,6 +24,6 @@ class ItemController extends Controller
 
         OrderController::addItemToCart($item_id, $item->price);
 
-        return redirect('/home');
+        return redirect('/{locale}/home');
     }
 }

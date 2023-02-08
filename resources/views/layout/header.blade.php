@@ -31,6 +31,7 @@
                     <button class="btn btn-danger" type="submit">Logout</button>
                 </form>
             @endif
+            <select name="" id=""></select>
         </div>
     </div>
 </nav>
