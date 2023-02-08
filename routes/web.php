@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Session;
 
 
 Route::get('/', function (){
-    $locale = "en";
+    $locale = 'id';
     App::setLocale($locale);
     Session::put('locale', $locale);
 
