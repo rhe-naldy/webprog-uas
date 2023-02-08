@@ -10,20 +10,20 @@
 </head>
 @include('layout.header')
 <body>
-    <div class="mx-5">
-        @foreach ($items as $item)
-            <div class="p-3 d-flex flex-row">
+    <div class="m-5">
+        @foreach ($carts as $cart)
+            <div class="p-3 d-flex flex-row justify-content-between align-items-center">
                 <div>
                     <img class="img-thumbnail" src="/items/broccoli.png" alt="Image Not Found..." style="scale: 1">
                 </div>
                 <div>
-                    <h5>{{ $item->item_name }}</h5>
+                    <h5>{{ $cart->item->item_name }}</h5>
                 </div>
                 <div>
-                    <h5>Price: Rp. {{ number_format($item->price, 0, ',', ',') }},-</h5>
+                    <h5>Rp. {{ number_format($cart->price, 0, ',', ',') }},-</h5>
                 </div>
                 <div>
-                    <form action="/delete-from-cart/{{$item->item_id}}" method="POST">
+                    <form action="/delete-from-cart/{{$cart->item_id}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger" type="submit">Delete</button>

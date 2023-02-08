@@ -20,9 +20,9 @@ class OrderController extends Controller
 
     public function viewCartPage(){
         $account_id = Auth::user()->account_id;
-        $items = Order::where('account_id', 'LIKE', "$account_id")->get();
+        $carts = Order::where('account_id', 'LIKE', "$account_id")->get();
 
-        return view('cart')->with('items', $items);
+        return view('cart')->with('carts', $carts);
     }
 
     public function deleteItemFromCart($item_id){
