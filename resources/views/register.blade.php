@@ -11,7 +11,7 @@
 @include('layout.header')
 <body>
     <div class="container p-5 mt-3 w-25 border rounded" style="margin-bottom: 10rem">
-        <form action="/{locale}/register" method="POST" enctype="multipart/form-data">
+        <form action="/register" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <h1 class="d-flex justify-content-center">Register</h1>

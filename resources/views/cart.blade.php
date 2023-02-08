@@ -12,7 +12,7 @@
 <body>
     @if ($count == 0)
         <div class="d-flex justify-content-center align-contents-center m-5 p-5">
-            <h1>Your cart is empty!</h1>
+            <h1>{{ __('cart.empty') }}</h1>
         </div>
     @else
     <div class="m-5">
@@ -31,7 +31,7 @@
                     <form action="/{locale}/delete-from-cart/{{$cart->order_id}}" method="POST">
                         @method('DELETE')
                         @csrf
-                        <button class="btn btn-danger" type="submit">Delete</button>
+                        <button class="btn btn-danger" type="submit">{{__('cart.delete')}}</button>
                     </form>
                 </div>
             </div>

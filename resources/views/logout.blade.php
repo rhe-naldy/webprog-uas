@@ -11,7 +11,7 @@
 @include('layout.header')
 <body>
     <div class="m-5 d-flex flex-column align-items-center">
-        <h1 class="mt-5">Log Out Success!</h1>
+        <h1 class="mt-5">{{__('account.logout_success')}}</h1>
     </div>
 </body>
 @include('layout.footer')

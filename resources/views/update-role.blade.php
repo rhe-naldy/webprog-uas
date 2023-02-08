@@ -16,7 +16,7 @@
         <br>
         <p>Role: </p>
 
-        <form action="/{locale}/update-role/{{$account->account_id}}" method="POST">
+        <form action="/update-role/{{$account->account_id}}" method="POST">
             @method('PATCH')
             @csrf
             <select class="form-control mb-2" name="role">

@@ -23,12 +23,12 @@
         </ul>
         <div class="d-flex flex-row">
             @if (!Auth::check())
-                <button class="btn btn-danger" type="button" onclick="window.location='/{locale}/register'">Register</button>
-                <button class="btn btn-primary" type="button" onclick="window.location='/{locale}/login'">Login</button>
+                <button class="btn btn-danger" type="button" onclick="window.location='/{locale}/register'">{{__('account.register')}}</button>
+                <button class="btn btn-primary" type="button" onclick="window.location='/{locale}/login'">{{__('account.login')}}</button>
             @elseif(Auth::check())
-                <form action="/{locale}/logout" method="POST">
+                <form action="/logout" method="POST">
                     @csrf
-                    <button class="btn btn-danger" type="submit">Logout</button>
+                    <button class="btn btn-danger" type="submit">{{__('account.logout')}}</button>
                 </form>
             @endif
             <div class="dropdown">
