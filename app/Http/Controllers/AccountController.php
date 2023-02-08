@@ -133,8 +133,6 @@ class AccountController extends Controller
             'email' => 'required|email|unique:accounts,email,'.$account_id.',account_id',
             'gender' => 'required',
             'display_picture_link' => 'file|mimes:jpeg,jpg,png,gif',
-            'password' => 'min:8|alpha_num|same:confirm_password',
-            'confirm_password' => 'same:password'
         ], [
             'first_name.required' => 'Please enter your first name',
             'first_name.alpha' => 'First name must only use alphabets',
@@ -148,11 +146,6 @@ class AccountController extends Controller
             'gender.required' => 'Please select your gender',
             'display_picture_link.file' => 'Profile picture needs to be a file',
             'display_picture_link.mimes' => 'Profile picture needs to be jpeg, jpg, png, or gif format',
-            'password.min' => 'Password is too short',
-            'password.same' => 'The passwords are different',
-            'password.alpha_num' => 'Password must be alphanumerical',
-            'password.same' => 'The passwords are different',
-            'confirm_password.same' => 'The passwords are different'
         ]);
 
         $account = Account::find($account_id);
@@ -162,6 +155,16 @@ class AccountController extends Controller
         $account->gender_id = $request->gender;
 
         if($request->password != null){
+            $request->validate([
+                'password' => 'min:8|alpha_num|same:confirm_password',
+                'confirm_password' => 'same:password'
+            ], [
+                'password.min' => 'Password is too short',
+                'password.same' => 'The passwords are different',
+                'password.alpha_num' => 'Password must be alphanumerical',
+                'password.same' => 'The passwords are different',
+                'confirm_password.same' => 'The passwords are different'
+            ]);
             $account->password = bcrypt($request->password);
         }
 
