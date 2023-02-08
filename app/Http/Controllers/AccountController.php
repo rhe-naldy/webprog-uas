@@ -60,7 +60,7 @@ class AccountController extends Controller
         $ext = $request->display_picture_link->getClientOriginalExtension();
         $first = explode(" ", $request->title)[0];
         $imageName = $first . "-" . time() . "." . $ext;
-        $request->thumbnail->move('accounts/', $imageName);
+        $request->display_picture_link->move('accounts/', $imageName);
 
         Account::create([
             'first_name' => $request->first_name,
@@ -124,11 +124,11 @@ class AccountController extends Controller
     }
 
     public function updateProfile(Request $request){
+        $account_id = Auth::user()->account_id;
         $request->validate([
             'first_name' => 'required|alpha|max:25',
             'last_name' => 'required|alpha|max:25',
-            'email' => 'required|email|unique:accounts',
-            'role' => 'required',
+            'email' => 'required|email|unique:accounts,email,'.$account_id.',account_id',
             'gender' => 'required',
             'display_picture_link' => 'file|mimes:jpeg,jpg,png,gif',
             'password' => 'min:8|alpha_num|same:confirm_password',
@@ -143,7 +143,6 @@ class AccountController extends Controller
             'email.required' => 'Please enter your email address',
             'email.email' => 'Please enter an email address',
             'email.unique' => 'The email is already registered',
-            'role.required' => 'Please select your role',
             'gender.required' => 'Please select your gender',
             'display_picture_link.file' => 'Profile picture needs to be a file',
             'display_picture_link.mimes' => 'Profile picture needs to be jpeg, jpg, png, or gif format',
@@ -154,7 +153,6 @@ class AccountController extends Controller
             'confirm_password.same' => 'The passwords are different'
         ]);
 
-        $account_id = Auth::user()->account_id;
         $account = Account::find($account_id);
         $account->first_name = $request->first_name;
         $account->last_name = $request->last_name;
@@ -170,7 +168,7 @@ class AccountController extends Controller
             $ext = $request->display_picture_link->getClientOriginalExtension();
             $first = explode(" ", $request->title)[0];
             $imageName = $first . "-" . time() . "." . $ext;
-            $request->thumbnail->move('accounts/', $imageName);
+            $request->display_picture_link->move('accounts/', $imageName);
 
             $account->display_picture_link = "accounts/" . $imageName;
         }

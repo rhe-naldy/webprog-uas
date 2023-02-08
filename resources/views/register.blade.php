@@ -34,8 +34,8 @@
                 @enderror
 
                 <label>Role</label>
-                <select class="form-control mb-2" name="role" disabled>
-                    <option value="user" selected>User</option>
+                <select class="form-control mb-2" name="role">
+                    <option value="{{ 2 }}" selected>User</option>
                 </select>
                 @error('role')
                     <p class="text-danger">{{ $message }}</p>

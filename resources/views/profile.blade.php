@@ -16,6 +16,7 @@
         </div>
         <div class="container p-3 px-5 mt-3 w-50 border rounded" style="margin-bottom: 5rem;">
             <form action="/update-profile" method="POST" enctype="multipart/form-data">
+                @method('PATCH')
                 @csrf
                 <div class="form-group">
                     <h1 class="d-flex justify-content-center">Profile</h1>
@@ -46,9 +47,6 @@
                             selected
                         @endif>Admin</option>
                     </select>
-                    @error('role')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
 
                     <label>Gender</label>
                     <select class="form-control mb-2" name="gender">
