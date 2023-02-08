@@ -10,7 +10,26 @@
 </head>
 @include('layout.header')
 <body>
+    <div class="m-5">
+        <h1>{{ $account->first_name }} {{ $account->last_name }}</h1>
+        <br>
+        <br>
+        <p>Role: </p>
 
+        <form action="/update-role/{{$account->account_id}}" method="POST">
+            @method('PATCH')
+            @csrf
+            <select class="form-control mb-2" name="role">
+                @foreach ($roles as $role)
+                <option value="{{$role->role_id}}" @if ($account->role->role_name == $role->role_name)
+                    selected
+                @endif>{{$role->role_name}}</option>
+                @endforeach
+            </select>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
 </body>
 @include('layout.footer')
 </html>

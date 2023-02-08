@@ -33,8 +33,8 @@ Route::patch('/update-profile', [AccountController::class, 'updateProfile']);
 Route::get('/update-success', [AccountController::class, 'viewSuccessPage']);
 
 Route::get('/maintenance', [AccountController::class, 'viewMaintenancePage']);
-Route::get('/update-role', [AccountController::class, 'viewUpdateRolePage']);
-Route::patch('/update-role', [AccountController::class, 'updateRole']);
+Route::get('/update-role/{account_id}', [AccountController::class, 'viewUpdateRolePage']);
+Route::patch('/update-role/{account_id}', [AccountController::class, 'updateRole']);
 Route::delete('/delete-account', [AccountController::class, 'deleteAccount']);
 
 Route::get('/cart', [OrderController::class, 'viewCartPage']);

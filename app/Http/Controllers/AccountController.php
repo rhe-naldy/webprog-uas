@@ -192,8 +192,9 @@ class AccountController extends Controller
 
     public function viewUpdateRolePage($account_id){
         $currAccount = Account::find($account_id);
+        $roles = RoleController::getAllRoles();
 
-        return view('update-role')->with('account', $currAccount);
+        return view('update-role')->with('account', $currAccount)->with('roles', $roles);
     }
 
     public function updateRole(Request $request, $account_id){
@@ -201,7 +202,7 @@ class AccountController extends Controller
         $currAccount->role_id = $request->role;
         $currAccount->save();
 
-        return redirect()->back();
+        return redirect('/maintenance');
     }
 
     public function deleteAccount($account_id){
