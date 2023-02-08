@@ -33,7 +33,7 @@ class OrderController extends Controller
         $item = Order::find($order_id);
         $item->delete();
 
-        return redirect()->back();
+        return redirect('/cart');
     }
 
     public function checkOut(){

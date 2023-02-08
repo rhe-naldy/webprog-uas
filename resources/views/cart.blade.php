@@ -29,7 +29,7 @@
                     <h5>Rp. {{ number_format($cart->price, 0, ',', ',') }},-</h5>
                 </div>
                 <div>
-                    <form action="/{locale}/delete-from-cart/{{$cart->order_id}}" method="POST">
+                    <form action="/delete-from-cart/{{$cart->order_id}}" method="POST">
                         @method('DELETE')
                         @csrf
                         <button class="btn btn-danger" type="submit">{{__('cart.delete')}}</button>
@@ -40,7 +40,7 @@
     </div>
     <div class="d-flex justify-content-end align-items-center" style="margin-right: 7rem;">
         <h1 class="px-5">Total: Rp. {{ number_format($total, 0, ',', ',') }},-</h1>
-        <form class="px-5" action="/{locale}/check-out" method="POST">
+        <form class="px-5" action="/check-out" method="POST">
             @method('DELETE')
             @csrf
             <button class="btn btn-success" type="submit">Check Out</button>
