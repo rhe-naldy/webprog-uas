@@ -27,7 +27,7 @@ class OrderController extends Controller
 
     public function deleteItemFromCart($item_id){
         $account_id = Auth::user()->account_id;
-        $item = Order::where('account_id', 'LIKE', "$account_id")->where('item_id', 'LIKE', "$item_id")->get();
+        $item = Order::where('account_id', 'LIKE', "$account_id")->where('item_id', 'LIKE', "$item_id");
         $item->delete();
 
         return redirect()->back();
