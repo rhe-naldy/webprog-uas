@@ -13,7 +13,7 @@
     <div class="m-5 d-flex flex-row">
         <div class="rounded m-5 p-2 d-flex flex-column align-items-center">
             <h2>{{ $item->item_name }}</h2>
-            <img class="img-thumbnail" src="/items/broccoli.png" alt="Image Not Found" style="scale: 1">
+            <img class="img-thumbnail" src="/items/broccoli.png" alt="Image Not Found">
         </div>
         <div class="m-5 d-flex flex-column">
             <div class="d-flex flex-column px-5">
