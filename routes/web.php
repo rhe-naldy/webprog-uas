@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,23 +18,22 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
+Route::get('/{locale?}', function ($locale = null) {
+    if (isset($locale) && in_array($locale, config('app.available_locales'))) {
+        App::setLocale($locale);
+    }
 
-Route::get('/', function (){
-    $locale = 'id';
-    App::setLocale($locale);
-    Session::put('locale', $locale);
-
-    return redirect('/'.$locale);
+    return redirect('/{locale}/index');
 });
 
-Route::get('/{locale}', function ($locale){
+Route::get('/lang/{locale}', function ($locale) {
     App::setLocale($locale);
     Session::put('locale', $locale);
 
     return redirect()->back();
 });
 
-Route::get('/{locale}', [AccountController::class, 'checkAuth']);
+Route::get('/{locale}/index', [AccountController::class, 'checkAuth']);
 Route::get('/{locale}/login', [AccountController::class, 'viewLoginPage']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::get('/{locale}/register', [AccountController::class, 'viewRegisterPage']);

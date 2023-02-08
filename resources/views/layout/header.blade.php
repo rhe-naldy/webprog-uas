@@ -32,17 +32,17 @@
                 </form>
             @endif
             <div class="dropdown">
-                <a class="navbar-brand text-black dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     @if(App::getLocale() == "en")
                         English
                     @elseif(App::getLocale() == "id")
                         Indonesian
                     @endif
-                </a>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="/en">English</a>
-                    <a class="dropdown-item" href="/id">Indonesian</a>
-                </div>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/lang/en">English</a></li>
+                    <li><a class="dropdown-item" href="/lang/id">Indonesian</a></li>
+                </ul>
             </div>
         </div>
     </div>
