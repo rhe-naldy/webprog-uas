@@ -17,7 +17,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Auth::check() || Auth::user()->role->role_id != "admin"){
+        if(!Auth::check() || Auth::user()->role->role_name != "admin"){
             return redirect('/home');
         }
         return $next($request);

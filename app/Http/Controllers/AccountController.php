@@ -183,7 +183,7 @@ class AccountController extends Controller
         return view('saved');
     }
 
-    public function viewMaintenancePage(){
+    public function viewMaintenancePage($locale){
         $accounts = Account::all();
 
         return view('maintenance')->with('accounts', $accounts);
