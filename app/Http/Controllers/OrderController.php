@@ -21,13 +21,16 @@ class OrderController extends Controller
     public function viewCartPage(){
         $account_id = Auth::user()->account_id;
         $carts = Order::where('account_id', 'LIKE', "$account_id")->get();
-
-        return view('cart')->with('carts', $carts);
+        $count = count($carts);
+        $total = 0;
+        foreach($carts as $cart){
+            $total += $cart->price;
+        }
+        return view('cart')->with('carts', $carts)->with('count', $count)->with('total', $total);
     }
 
-    public function deleteItemFromCart($item_id){
-        $account_id = Auth::user()->account_id;
-        $item = Order::where('account_id', 'LIKE', "$account_id")->where('item_id', 'LIKE', "$item_id");
+    public function deleteItemFromCart($order_id){
+        $item = Order::find($order_id);
         $item->delete();
 
         return redirect()->back();
@@ -35,7 +38,7 @@ class OrderController extends Controller
 
     public function checkOut(){
         $account_id = Auth::user()->account_id;
-        $order = Order::where('account_id', 'LIKE', "$account_id")->get();
+        $order = Order::where('account_id', 'LIKE', "$account_id");
 
         $order->delete();
 

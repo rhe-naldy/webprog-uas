@@ -28,5 +28,5 @@ Route::get('/profile', [AccountController::class, 'viewProfilePage']);
 Route::get('/manage', [AccountController::class, 'viewMaintenancePage']);
 
 Route::get('/cart', [OrderController::class, 'viewCartPage']);
-Route::delete('/delete-from-cart/{item_id}', [OrderController::class, 'deleteItemFromCart']);
+Route::delete('/delete-from-cart/{order_id}', [OrderController::class, 'deleteItemFromCart']);
 Route::delete('/check-out', [OrderController::class, 'checkOut']);
