@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,7 @@
             <img src="{{ url($account->display_picture_link) }}" alt="Image Not Found..." style="width: 20rem; height: 20rem">
         </div>
         <div class="container p-3 px-5 mt-3 w-50 border rounded" style="margin-bottom: 5rem;">
-            <form action="/update-profile" method="POST" enctype="multipart/form-data">
+            <form action="/{locale}/update-profile" method="POST" enctype="multipart/form-data">
                 @method('PATCH')
                 @csrf
                 <div class="form-group">

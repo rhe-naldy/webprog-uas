@@ -17,7 +17,7 @@
                     <img class="img-thumbnail" src="/items/broccoli.png" alt="Image Not Found" style="...">
                     <div class="card-body">
                         <h6 class="text-dark">{{ $item->item_name }}</h6>
-                        <a class="card-text" href="/item/{{ $item->item_id }}">Detail</a>
+                        <a class="card-text" href="/{locale}/item/{{ $item->item_id }}">Detail</a>
                     </div>
                 </div>
             </div>

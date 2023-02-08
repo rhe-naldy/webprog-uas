@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 @include('layout.header')
 <body>
     <div class="container p-5 mt-3 w-25 border rounded">
-        <form action="/login" method="POST">
+        <form action="/{locale}/login" method="POST">
             @csrf
             <div class="form-group">
                 <h1 class="d-flex justify-content-center">Login</h1>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,7 @@
                 <p>{{ $item->item_desc }}</p>
             </div>
             <div class="d-flex flex-row-reverse p-5">
-                <form action="/buy-item/{{$item->item_id}}" method="POST">
+                <form action="/{locale}/buy-item/{{$item->item_id}}" method="POST">
                     @csrf
                     <button class="btn btn-primary" type="submit">Buy</button>
                 </form>

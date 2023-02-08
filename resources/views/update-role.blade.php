@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
         <br>
         <p>Role: </p>
 
-        <form action="/update-role/{{$account->account_id}}" method="POST">
+        <form action="/{locale}/update-role/{{$account->account_id}}" method="POST">
             @method('PATCH')
             @csrf
             <select class="form-control mb-2" name="role">

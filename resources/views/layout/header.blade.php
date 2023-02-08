@@ -6,32 +6,44 @@
                 {{-- Empty on purpose. Do not display the navbar --}}
             @elseif (Auth::check())
             <li class="nav-item">
-                <a class="nav-link" href="/home">Home</a>
+                <a class="nav-link" href="/{locale}/home">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/cart">Cart</a>
+                <a class="nav-link" href="/{locale}/cart">Cart</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
+                <a class="nav-link" href="/{locale}/profile">Profile</a>
             </li>
             @if (Auth::user()->role->role_name == "admin")
             <li class="nav-item">
-                <a class="nav-link" href="/maintenance">Account Maintenance</a>
+                <a class="nav-link" href="/{locale}/maintenance">Account Maintenance</a>
             </li>
             @endif
             @endif
         </ul>
-        <div>
+        <div class="d-flex flex-row">
             @if (!Auth::check())
-                <button class="btn btn-danger" type="button" onclick="window.location='/register'">Register</button>
-                <button class="btn btn-primary" type="button" onclick="window.location='/login'">Login</button>
+                <button class="btn btn-danger" type="button" onclick="window.location='/{locale}/register'">Register</button>
+                <button class="btn btn-primary" type="button" onclick="window.location='/{locale}/login'">Login</button>
             @elseif(Auth::check())
-                <form action="/logout" method="POST">
+                <form action="/{locale}/logout" method="POST">
                     @csrf
                     <button class="btn btn-danger" type="submit">Logout</button>
                 </form>
             @endif
-            <select name="" id=""></select>
+            <div class="dropdown">
+                <a class="navbar-brand text-black dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @if(App::getLocale() == "en")
+                        English
+                    @elseif(App::getLocale() == "id")
+                        Indonesian
+                    @endif
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="/en">English</a>
+                    <a class="dropdown-item" href="/id">Indonesian</a>
+                </div>
+            </div>
         </div>
     </div>
 </nav>

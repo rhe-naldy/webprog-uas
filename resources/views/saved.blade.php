@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,7 +14,7 @@
         <h1 class="mt-5">Saved!</h1>
         <br>
         <br>
-        <span>Click <a href="/home">here</a> to go to "Home".</span>
+        <span>Click <a href="/{locale}/home">here</a> to go to "Home".</span>
     </div>
 </body>
 @include('layout.footer')

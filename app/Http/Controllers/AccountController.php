@@ -176,7 +176,7 @@ class AccountController extends Controller
 
         $account->save();
 
-        return redirect("/{locale}/update-success");
+        return redirect('/{locale}/update-success');
     }
 
     public function viewSuccessPage(){

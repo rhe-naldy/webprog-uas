@@ -23,7 +23,7 @@ Route::get('/', function (){
     App::setLocale($locale);
     Session::put('locale', $locale);
 
-    return redirect('/');
+    return redirect('/'.$locale);
 });
 
 Route::get('/{locale}', function ($locale){
@@ -33,15 +33,15 @@ Route::get('/{locale}', function ($locale){
     return redirect()->back();
 });
 
-Route::get('/', [AccountController::class, 'checkAuth']);
-Route::get('/login', [AccountController::class, 'viewLoginPage']);
-Route::post('/login', [AccountController::class, 'login']);
-Route::get('/register', [AccountController::class, 'viewRegisterPage']);
-Route::post('/register', [AccountController::class, 'register']);
-Route::get('/logout', [AccountController::class, 'viewLogoutPage'])->middleware('registered');
-Route::post('/logout', [AccountController::class, 'logout'])->middleware('registered');
+Route::get('/{locale}', [AccountController::class, 'checkAuth']);
+Route::get('/{locale}/login', [AccountController::class, 'viewLoginPage']);
+Route::post('/{locale}/login', [AccountController::class, 'login']);
+Route::get('/{locale}/register', [AccountController::class, 'viewRegisterPage']);
+Route::post('/{locale}/register', [AccountController::class, 'register']);
+Route::get('/{locale}/logout', [AccountController::class, 'viewLogoutPage'])->middleware('registered');
+Route::post('/{locale}/logout', [AccountController::class, 'logout'])->middleware('registered');
 
-Route::get('/{locale}/{locale}/home', [ItemController::class, 'viewHomePage'])->middleware('registered');
+Route::get('/{locale}/home', [ItemController::class, 'viewHomePage'])->middleware('registered');
 Route::get('/{locale}/item/{item_id}', [ItemController::class, 'viewItemDetail'])->middleware('registered');
 Route::post('/{locale}/buy-item/{item_id}', [ItemController::class, 'buyItem'])->middleware('registered');
 

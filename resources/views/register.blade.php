@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 @include('layout.header')
 <body>
     <div class="container p-5 mt-3 w-25 border rounded" style="margin-bottom: 10rem">
-        <form action="/register" method="POST" enctype="multipart/form-data">
+        <form action="/{locale}/register" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <h1 class="d-flex justify-content-center">Register</h1>
@@ -74,7 +74,7 @@
                 <button type="submit" class="btn btn-primary px-5">Register</button>
             </div>
             <div class="pt-3 d-flex justify-content-center">
-                <p>Already have an account? Login <span onclick="window.location='/login'" class="text-primary">here</span></p>
+                <p>Already have an account? Login <span onclick="window.location='/{locale}/login'" class="text-primary">here</span></p>
             </div>
         </form>
     </div>

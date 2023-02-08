@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ App::getLocale() }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +24,8 @@
                 <tr>
                     <td>{{ $account->first_name }} {{ $account->last_name }} - {{ $account->role->role_name }}</td>
                     <td class="d-flex flex-row">
-                        <a class="btn btn-primary" href="/update-role/{{$account->account_id}}">Update Role</a>
-                        <form class="px-3" action="/delete-account/{{$account->account_id}}" method="POST">
+                        <a class="btn btn-primary" href="/{locale}/update-role/{{$account->account_id}}">Update Role</a>
+                        <form class="px-3" action="/{locale}/delete-account/{{$account->account_id}}" method="POST">
                             @method('DELETE')
                             @csrf
                             <button class="btn btn-danger" type="submit">Delete</button>
