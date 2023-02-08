@@ -35,5 +35,38 @@ class AccountSeeder extends Seeder
             'display_picture_link' => "accounts/percy.png",
             'password' => bcrypt("user12345")
         ]);
+
+        DB::table('accounts')->insert([
+            'account_id' => 3,
+            'role_id' => 2,
+            'gender_id' => 1,
+            'first_name' => "Dummy",
+            'last_name' => "One",
+            'email' => "user1@gmail.com",
+            'display_picture_link' => "accounts/percy.png",
+            'password' => bcrypt("user12345")
+        ]);
+
+        DB::table('accounts')->insert([
+            'account_id' => 4,
+            'role_id' => 2,
+            'gender_id' => 1,
+            'first_name' => "Dummy",
+            'last_name' => "Two",
+            'email' => "user2@gmail.com",
+            'display_picture_link' => "accounts/percy.png",
+            'password' => bcrypt("user12345")
+        ]);
+
+        DB::table('accounts')->insert([
+            'account_id' => 5,
+            'role_id' => 2,
+            'gender_id' => 1,
+            'first_name' => "Dummy",
+            'last_name' => "Three",
+            'email' => "user3@gmail.com",
+            'display_picture_link' => "accounts/percy.png",
+            'password' => bcrypt("user12345")
+        ]);
     }
 }
