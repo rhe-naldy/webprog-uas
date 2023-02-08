@@ -10,7 +10,33 @@
 </head>
 @include('layout.header')
 <body>
-
+    <div>
+        <table class="table" style="padding-left: 10rem">
+            <thead>
+                <tr>
+                    <th scope="col">Account</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($accounts as $account)
+                @if ($account->account_id != Auth::user()->account_id)
+                <tr>
+                    <td>{{ $account->first_name }} {{ $account->last_name }} - {{ $account->role->role_name }}</td>
+                    <td class="d-flex flex-row">
+                        <a href="/update-role/{{$account->account_id}}">Update Role</a>
+                        <form class="px-3" action="/delete-account/{{$account->account_id}}" method="POST">
+                            @method('PATCH')
+                            @csrf
+                            <a href="Delete" type="submit">Delete</a>
+                        </form>
+                    </td>
+                </tr>
+                @endif
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </body>
 @include('layout.footer')
 </html>

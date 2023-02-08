@@ -2,6 +2,9 @@
     <a class="navbar-brand mb-1 mx-2 h1" href="/">Amazing E-Grocery</a>
     <div class="collapse navbar-collapse justify-content-between">
         <ul class="navbar-nav mr-auto">
+            @if (!Auth::check())
+                {{-- Empty on purpose. Do not display the navbar --}}
+            @elseif (Auth::check())
             <li class="nav-item">
                 <a class="nav-link" href="/home">Home</a>
             </li>
@@ -11,6 +14,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/profile">Profile</a>
             </li>
+            @if (Auth::user()->role->role_name == "admin")
+            <li class="nav-item">
+                <a class="nav-link" href="/maintenance">Account Maintenance</a>
+            </li>
+            @endif
+            @endif
         </ul>
         <div>
             @if (!Auth::check())

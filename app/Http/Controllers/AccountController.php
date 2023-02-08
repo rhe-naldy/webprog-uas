@@ -198,7 +198,7 @@ class AccountController extends Controller
 
     public function updateRole(Request $request, $account_id){
         $currAccount = Account::find($account_id);
-        $currAccount->role_id = $request->role_id;
+        $currAccount->role_id = $request->role;
         $currAccount->save();
 
         return redirect()->back();

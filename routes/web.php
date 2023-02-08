@@ -16,19 +16,26 @@ use App\Http\Controllers\OrderController;
 */
 
 Route::get('/', [AccountController::class, 'checkAuth']);
+
 Route::get('/login', [AccountController::class, 'viewLoginPage']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::get('/register', [AccountController::class, 'viewRegisterPage']);
 Route::post('/register', [AccountController::class, 'register']);
 Route::get('/logout', [AccountController::class, 'viewLogoutPage']);
 Route::post('/logout', [AccountController::class, 'logout']);
+
 Route::get('/home', [ItemController::class, 'viewHomePage']);
 Route::get('/item/{item_id}', [ItemController::class, 'viewItemDetail']);
 Route::post('/buy-item/{item_id}', [ItemController::class, 'buyItem']);
+
 Route::get('/profile', [AccountController::class, 'viewProfilePage']);
 Route::patch('/update-profile', [AccountController::class, 'updateProfile']);
 Route::get('/update-success', [AccountController::class, 'viewSuccessPage']);
-Route::get('/manage', [AccountController::class, 'viewMaintenancePage']);
+
+Route::get('/maintenance', [AccountController::class, 'viewMaintenancePage']);
+Route::get('/update-role', [AccountController::class, 'viewUpdateRolePage']);
+Route::patch('/update-role', [AccountController::class, 'updateRole']);
+Route::delete('/delete-account', [AccountController::class, 'deleteAccount']);
 
 Route::get('/cart', [OrderController::class, 'viewCartPage']);
 Route::delete('/delete-from-cart/{order_id}', [OrderController::class, 'deleteItemFromCart']);
