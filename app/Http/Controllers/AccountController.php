@@ -61,7 +61,7 @@ class AccountController extends Controller
         $ext = $request->display_picture_link->getClientOriginalExtension();
         $first = explode(" ", $request->first_name)[0];
         $imageName = $first . "-" . time() . "." . $ext;
-        $request->display_picture_link->move('accounts/', $imageName);
+        $request->display_picture_link->move('accounts', $imageName);
 
         Account::create([
             'first_name' => $request->first_name,
@@ -169,7 +169,7 @@ class AccountController extends Controller
             $ext = $request->display_picture_link->getClientOriginalExtension();
             $first = explode(" ", $request->first_name)[0];
             $imageName = $first . "-" . time() . "." . $ext;
-            $request->display_picture_link->move('accounts/', $imageName);
+            $request->display_picture_link->move('accounts', $imageName);
 
             $account->display_picture_link = "accounts/" . $imageName;
         }
