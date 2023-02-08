@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules\Password;
 use App\Models\Account;
 
 class AccountController extends Controller
@@ -32,7 +33,7 @@ class AccountController extends Controller
             'role' => 'required',
             'gender' => 'required',
             'display_picture_link' => 'required|file|mimes:jpeg,jpg,png,gif',
-            'password' => 'required|min:8|alpha_num|same:confirm_password',
+            'password' => 'required|alpha_num|same:confirm_password',
             'confirm_password' => 'required|same:password'
         ], [
             'first_name.required' => 'Please enter your first name',
@@ -58,7 +59,7 @@ class AccountController extends Controller
         ]);
 
         $ext = $request->display_picture_link->getClientOriginalExtension();
-        $first = explode(" ", $request->title)[0];
+        $first = explode(" ", $request->first_name)[0];
         $imageName = $first . "-" . time() . "." . $ext;
         $request->display_picture_link->move('accounts/', $imageName);
 
@@ -103,11 +104,12 @@ class AccountController extends Controller
             return redirect('/home');
         }
 
-        return redirect('/login')->withErrors(['credentials' => 'Incorrect email or password']);
+        return redirect('/login')->withErrors(['credentials' => 'Wrong Email/Password. Please Check Again']);
     }
 
     public function logout(){
         Auth::logout();
+        Session::forget('session');
         return redirect('/logout');
     }
 
@@ -157,7 +159,6 @@ class AccountController extends Controller
         $account->first_name = $request->first_name;
         $account->last_name = $request->last_name;
         $account->email = $request->email;
-        $account->role_id = $request->role;
         $account->gender_id = $request->gender;
 
         if($request->password != null){
@@ -166,7 +167,7 @@ class AccountController extends Controller
 
         if($request->display_picture_link != null){
             $ext = $request->display_picture_link->getClientOriginalExtension();
-            $first = explode(" ", $request->title)[0];
+            $first = explode(" ", $request->first_name)[0];
             $imageName = $first . "-" . time() . "." . $ext;
             $request->display_picture_link->move('accounts/', $imageName);
 
