@@ -20,11 +20,13 @@ Route::get('/login', [AccountController::class, 'viewLoginPage']);
 Route::post('/login', [AccountController::class, 'login']);
 Route::get('/register', [AccountController::class, 'viewRegisterPage']);
 Route::post('/register', [AccountController::class, 'register']);
+Route::get('/logout', [AccountController::class, 'viewLogoutPage']);
 Route::post('/logout', [AccountController::class, 'logout']);
 Route::get('/home', [ItemController::class, 'viewHomePage']);
 Route::get('/item/{item_id}', [ItemController::class, 'viewItemDetail']);
 Route::post('/buy-item/{item_id}', [ItemController::class, 'buyItem']);
 Route::get('/profile', [AccountController::class, 'viewProfilePage']);
+Route::patch('/update-profile', [AccountController::class, 'updateProfile']);
 Route::get('/manage', [AccountController::class, 'viewMaintenancePage']);
 
 Route::get('/cart', [OrderController::class, 'viewCartPage']);

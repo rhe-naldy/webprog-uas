@@ -17,7 +17,10 @@
                 <button class="btn btn-danger" type="button" onclick="window.location='/register'">Register</button>
                 <button class="btn btn-primary" type="button" onclick="window.location='/login'">Login</button>
             @elseif(Auth::check())
-                <button class="btn btn-danger" type="button" onclick="window.location='/logout'">Logout</button>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button class="btn btn-danger" type="submit">Logout</button>
+                </form>
             @endif
         </div>
     </div>

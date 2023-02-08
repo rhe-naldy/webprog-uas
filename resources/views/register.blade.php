@@ -43,8 +43,9 @@
 
                 <label>Gender</label>
                 <select class="form-control mb-2" name="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                    @foreach ($genders as $gender)
+                        <option value="{{ $gender->gender_id }}">{{ $gender->gender_desc }}</option>
+                    @endforeach
                 </select>
                 @error('gender')
                     <p class="text-danger">{{ $message }}</p>
@@ -58,27 +59,22 @@
 
                 <label>Password</label>
                 <input type="password" class="form-control mb-2" name="password">
-                <i class="bi bi-eye-slash" id="togglePassword"></i>
                 @error('password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
                 <label>Confirm Password</label>
                 <input type="password" class="form-control mb-2" name="confirm_password">
-                <i class="bi bi-eye-slash" id="togglePassword"></i>
+
                 @error('confirm_password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
             </div>
-            <div class="pb-4 d-flex align-items-center">
-                <label>Remember me</label>
-                <input class="mx-2" type="checkbox" name="remember" checked={{Cookie::get('emailCookie') != null}}>
+            <div class="pt-5 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary px-5">Register</button>
             </div>
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary px-5">Login</button>
-            </div>
-            <div class="pt-4 d-flex justify-content-center">
-                <p>Don't have an account yet? Register <span onclick="window.location='/register'" class="text-primary">here</span></p>
+            <div class="pt-3 d-flex justify-content-center">
+                <p>Already have an account? Login <span onclick="window.location='/login'" class="text-primary">here</span></p>
             </div>
         </form>
     </div>
