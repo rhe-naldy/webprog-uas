@@ -12,7 +12,7 @@ class AccountController extends Controller
 {
     public function checkAuth(){
         if(Auth::check()){
-            return view('home');
+            return redirect('/home');
         } else if(!Auth::check()){
             return view('index');
         }
