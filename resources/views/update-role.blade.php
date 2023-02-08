@@ -14,7 +14,7 @@
         <h1>{{ $account->first_name }} {{ $account->last_name }}</h1>
         <br>
         <br>
-        <p>Role: </p>
+        <p>{{__('account.role')}}: </p>
 
         <form action="/update-role/{{$account->account_id}}" method="POST">
             @method('PATCH')
@@ -27,7 +27,7 @@
                 @endforeach
             </select>
 
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">{{__('account.save')}}</button>
         </form>
     </div>
 </body>

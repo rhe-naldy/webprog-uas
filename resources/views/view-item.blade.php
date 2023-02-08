@@ -17,13 +17,13 @@
         </div>
         <div class="m-5 d-flex flex-column">
             <div class="d-flex flex-column px-5">
-                <h5 class="font-weight-bold mt-3">Price: Rp. {{ number_format($item->price, 0, ',', ',') }},-</h5>
+                <h5 class="font-weight-bold mt-3">{{__('item.price')}}: Rp. {{ number_format($item->price, 0, ',', ',') }},-</h5>
                 <p>{{ $item->item_desc }}</p>
             </div>
             <div class="d-flex flex-row-reverse p-5">
                 <form action="/buy-item/{{$item->item_id}}" method="POST">
                     @csrf
-                    <button class="btn btn-primary" type="submit">Buy</button>
+                    <button class="btn btn-primary" type="submit">{{__('item.buy')}}</button>
                 </form>
             </div>
         </div>

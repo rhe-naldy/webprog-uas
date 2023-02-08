@@ -14,14 +14,14 @@
         <form action="/register" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <h1 class="d-flex justify-content-center">Register</h1>
-                <label>First Name</label>
+                <h1 class="d-flex justify-content-center">{{__('account.register')}}</h1>
+                <label>{{__('account.first_name')}}</label>
                 <input type="text" class="form-control mb-2" name="first_name">
                 @error('first_name')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                <label>Last Name</label>
+                <label>{{__('account.last_name')}}</label>
                 <input type="text" class="form-control mb-2" name="last_name">
                 @error('last_name')
                     <p class="text-danger">{{ $message }}</p>
@@ -33,7 +33,7 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                <label>Role</label>
+                <label>{{__('account.role')}}</label>
                 <select class="form-control mb-2" name="role">
                     <option value="{{ 2 }}" selected>User</option>
                 </select>
@@ -41,7 +41,7 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                <label>Gender</label>
+                <label>{{__('account.gender')}}</label>
                 <select class="form-control mb-2" name="gender">
                     @foreach ($genders as $gender)
                         <option value="{{ $gender->gender_id }}">{{ $gender->gender_desc }}</option>
@@ -51,19 +51,19 @@
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                <label>Display Picture</label>
+                <label>{{__('account.picture')}}</label>
                 <input type="file" accpet="image/*, .jpeg, .jpg, .png, .gif" class="form-control mb-2" name="display_picture_link">
                 @error('display_picture_link')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                <label>Password</label>
+                <label>{{__('account.password')}}</label>
                 <input type="password" class="form-control mb-2" name="password">
                 @error('password')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
 
-                <label>Confirm Password</label>
+                <label>{{__('account.conf_password')}}</label>
                 <input type="password" class="form-control mb-2" name="confirm_password">
 
                 @error('confirm_password')
@@ -71,10 +71,10 @@
                 @enderror
             </div>
             <div class="pt-5 d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary px-5">Register</button>
+                <button type="submit" class="btn btn-primary px-5">{{__('account.register')}}</button>
             </div>
             <div class="pt-3 d-flex justify-content-center">
-                <p>Already have an account? Login <span onclick="window.location='/{locale}/login'" class="text-primary">here</span></p>
+                <p>{{__('account.have_account')}}<span onclick="window.location='/{locale}/login'" class="text-primary">{{__('account.here')}}</span></p>
             </div>
         </form>
     </div>

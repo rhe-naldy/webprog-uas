@@ -14,8 +14,8 @@
         <table class="table" style="padding-left: 10rem">
             <thead>
                 <tr>
-                    <th scope="col">Account</th>
-                    <th scope="col">Action</th>
+                    <th scope="col">{{__('account.account')}}</th>
+                    <th scope="col">{{__('account.action')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,11 +24,11 @@
                 <tr>
                     <td>{{ $account->first_name }} {{ $account->last_name }} - {{ $account->role->role_name }}</td>
                     <td class="d-flex flex-row">
-                        <a class="btn btn-primary" href="/{locale}/update-role/{{$account->account_id}}">Update Role</a>
+                        <a class="btn btn-primary" href="/{locale}/update-role/{{$account->account_id}}">{{__('account.update_role')}}</a>
                         <form class="px-3" action="/delete-account/{{$account->account_id}}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">{{__('account.delete')}}</button>
                         </form>
                     </td>
                 </tr>

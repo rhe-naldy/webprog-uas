@@ -11,13 +11,13 @@
 @include('layout.header')
 <body>
     <div class="m-5 d-flex flex-column align-items-center">
-        <h1 class="mt-5">Success!</h1>
+        <h1 class="mt-5">{{__('item.success')}}</h1>
         <br>
         <br>
-        <h4>We will contact you within 24 hours.</h4>
+        <h4>{{__('item.contact')}}</h4>
         <br>
         <br>
-        <span>Click <a href="/{locale}/home">here</a> to go to "Home".</span>
+        <span>{{__('account.click')}}<a href="/{locale}/home">{{__('account.here')}}</a>{{__('account.home')}}</span>
     </div>
 </body>
 @include('layout.footer')
